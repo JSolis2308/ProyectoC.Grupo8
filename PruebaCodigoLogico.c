@@ -1,131 +1,205 @@
 #include <stdio.h>
-#include <string.h>
 #include <gtk/gtk.h>
-#include <glib.h>
+
 
 int i;
-int posiciones_cuadricula[9];
+int turno = 0;
+char posiciones_cuadricula[9];
 
 
 void on_clicked_1_1(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_1x1 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/X (1).png");
     g_print("Boton 1x1 Clicked\n");
-    posiciones_cuadricula[0] = 1;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[0] = 1;
+      gtk_button_set_image(button_1x1, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[0] = 2;
+      gtk_button_set_image(button_1x1, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_1x1, image);
-    gtk_label_set_text(label, "Boton 1x1");
+    }
 }
 
 void on_clicked_1_2(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_1x2 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/O (1).png");
-    gtk_label_set_text(label, "Boton 1x2");
     g_print("Boton 1x2 Clicked\n");
-    posiciones_cuadricula[1] = 2;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[1] = 1;
+      gtk_button_set_image(button_1x2, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[1] = 2;
+      gtk_button_set_image(button_1x2, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_1x2, image);
-
+    }
 }
 
 void on_clicked_1_3(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_1x3 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/X (1).png");
-    gtk_label_set_text(label, "Boton 1x3");
     g_print("Boton 1x3 Clicked\n");
-    posiciones_cuadricula[2] = 3;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[2] = 1;
+      gtk_button_set_image(button_1x3, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[2] = 2;
+      gtk_button_set_image(button_1x3, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_1x3, image);
+    }
 }
 
 void on_clicked_2_1(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_2x1 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/O (1).png");
-    gtk_label_set_text(label, "Boton 2x1");
     g_print("Boton 2x1 Clicked\n");
-    posiciones_cuadricula[3] = 4;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[3] = 1;
+      gtk_button_set_image(button_2x1, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[3] = 2;
+      gtk_button_set_image(button_2x1, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_2x1, image);
+    }
 }
 
 void on_clicked_2_2(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_2x2 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/X (1).png");
-    gtk_label_set_text(label, "Boton 2x2");
     g_print("Boton 2x2 Clicked\n");
-    posiciones_cuadricula[4] = 5;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[4] = 1;
+      gtk_button_set_image(button_2x2, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[4] = 2;
+      gtk_button_set_image(button_2x2, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_2x2, image);
+    }
 }
 
 void on_clicked_2_3(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_2x3 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/X (1).png");
-    gtk_label_set_text(label, "Boton 2x3");
     g_print("Boton 2x3 Clicked\n");
-    posiciones_cuadricula[5] = 6;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[5] = 1;
+      gtk_button_set_image(button_2x3, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[5] = 2;
+      gtk_button_set_image(button_2x3, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_2x3, image);
+    }
 }
 
 void on_clicked_3_1(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_3x1 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/O (1).png");
-    gtk_label_set_text(label, "Boton 3x1");
     g_print("Boton 3x1 Clicked\n");
-    posiciones_cuadricula[6] = 7;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[6] = 1;
+      gtk_button_set_image(button_3x1, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[6] = 2;
+      gtk_button_set_image(button_3x1, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_3x1, image);
+    }
 }
 
 void on_clicked_3_2(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_3x2 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/X (1).png");
-    gtk_label_set_text(label, "Boton 3x2");
     g_print("Boton 3x2 Clicked\n");
-    posiciones_cuadricula[7] = 8;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[7] = 1;
+      gtk_button_set_image(button_3x2, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[7] = 2;
+      gtk_button_set_image(button_3x2, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_3x2, image);
+    }
 }
 
 void on_clicked_3_3(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_3x3 = (GtkButton*) data;
-    GtkWidget *image = gtk_image_new_from_file("/home/jsolis2308/Downloads/O (1).png");
-    gtk_label_set_text(label, "Boton 3x3");
     g_print("Boton 3x3 Clicked\n");
-    posiciones_cuadricula[8] = 9;
+    if (turno%2 == 0){
+      GtkWidget *image = gtk_image_new_from_file("X (1).png");
+      posiciones_cuadricula[8] = 1;
+      gtk_button_set_image(button_3x3, image);
+      turno = turno + 1;
+    }
+    else{
+      GtkWidget *image = gtk_image_new_from_file("O (1).png");
+      posiciones_cuadricula[8] = 2;
+      gtk_button_set_image(button_3x3, image);
+      turno = turno + 1;
+    }
     for (i=0; i<9; i++){
       g_print("%d \n", posiciones_cuadricula[i]) ;
-      }
-    gtk_button_set_image(button_3x3, image);
+    }
 }
 
-
+void on_clicked_reset(GtkWidget *widget, gpointer data) {
+    GtkLabel *label = (GtkLabel*) data;
+    gtk_label_set_text(label, "Iniciar Juego. \n Turno de X");
+}
 
 int main(int argc, char* argv[]) {
     GtkBuilder *builder;
@@ -146,8 +220,7 @@ int main(int argc, char* argv[]) {
     gtk_init(&argc, &argv);
 
     // Get GUI from file
-    builder = gtk_builder_new_from_file(
-        "//home/jsolis2308/Desktop/ProyectoC-Grupo-8/Archivos_de_Prueba/Prueba.glade");
+    builder = gtk_builder_new_from_file("Prueba.glade");
 
     window = GTK_WIDGET(gtk_builder_get_object(builder, "Ventana Principal"));
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
@@ -175,6 +248,7 @@ int main(int argc, char* argv[]) {
     g_signal_connect(button_3x2, "clicked", G_CALLBACK(on_clicked_3_2), label);
     g_signal_connect(button_3x3, "clicked", G_CALLBACK(on_clicked_3_3), label);
     g_signal_connect(quit_button, "clicked", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect(reset_button, "clicked", G_CALLBACK(on_clicked_reset), label);
     // Show and start main loop
     gtk_widget_show_all(window);
     gtk_main();
