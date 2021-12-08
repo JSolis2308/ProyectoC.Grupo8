@@ -220,7 +220,7 @@ int main(int argc, char* argv[]) {
     gtk_init(&argc, &argv);
 
     // Get GUI from file
-    builder = gtk_builder_new_from_file("Prueba.glade");
+    builder = gtk_builder_new_from_file("Interfaz.glade");
 
     window = GTK_WIDGET(gtk_builder_get_object(builder, "Ventana Principal"));
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
