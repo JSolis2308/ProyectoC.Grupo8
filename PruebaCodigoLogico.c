@@ -18,7 +18,9 @@ variable que indica quien es el ganador
  =0 -> nadie ha ganado
 */
 int ganador = 0;
-
+//variable utilizada para saber cuando alguien ganó, y se usa para bloquear el efecto de elementos
+//clicks en los botones del juego
+int bloqueo=0;
 //funcoin winn: Función que revisa las casillas y con base en cuales estan marcadas
 //dice cuál jugador ganó
 void winn(){
@@ -27,41 +29,49 @@ void winn(){
       posiciones_cuadricula[1]==posiciones_cuadricula[2] &&
       posiciones_cuadricula[2]!=0){
         ganador = posiciones_cuadricula[2];
+        bloqueo=1;
 
   }else if(posiciones_cuadricula[3] == posiciones_cuadricula[4] &&
            posiciones_cuadricula[4] == posiciones_cuadricula[5] &&
            posiciones_cuadricula[5] != 0){
              ganador = posiciones_cuadricula[5];
+             bloqueo =1;
 
   }else if(posiciones_cuadricula[6] == posiciones_cuadricula[7] &&
            posiciones_cuadricula[7] == posiciones_cuadricula[8] &&
            posiciones_cuadricula[8] !=0){
              ganador = posiciones_cuadricula[8];
+             bloqueo=1;
 
   }else if(posiciones_cuadricula[0] == posiciones_cuadricula[3] &&
            posiciones_cuadricula[3] == posiciones_cuadricula[6] &&
            posiciones_cuadricula[6] !=0){
              ganador = posiciones_cuadricula[6];
+            bloqueo=1;
 
   }else if(posiciones_cuadricula[1] == posiciones_cuadricula[4] &&
            posiciones_cuadricula[4] == posiciones_cuadricula[7] &&
            posiciones_cuadricula[7] != 0){
              ganador = posiciones_cuadricula[7];
+             bloqueo=1;
 
   }else if(posiciones_cuadricula[2] == posiciones_cuadricula[5] &&
            posiciones_cuadricula[5] == posiciones_cuadricula[8] &&
            posiciones_cuadricula[8] != 0){
              ganador = posiciones_cuadricula[8];
+             bloqueo=1;
 
   }else if(posiciones_cuadricula[0] == posiciones_cuadricula[4] &&
            posiciones_cuadricula[4] == posiciones_cuadricula[8] &&
            posiciones_cuadricula[8] != 0){
              ganador = posiciones_cuadricula[8];
+             bloqueo=1;
 
   }else if(posiciones_cuadricula[2] == posiciones_cuadricula[4] &&
            posiciones_cuadricula[4] == posiciones_cuadricula[6] &&
            posiciones_cuadricula[6] != 0){
              ganador = posiciones_cuadricula[6];
+             bloqueo=1;
   }
 }
 
@@ -70,7 +80,7 @@ void on_clicked_1_1(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_1x1 = (GtkButton*) data;
     g_print("Boton 1x1 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[0] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[0] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[0] = 1;
       gtk_button_set_image(button_1x1, image);
@@ -78,7 +88,7 @@ void on_clicked_1_1(GtkWidget *widget, GtkButton *button, gpointer data) {
       winn();
     }
 
-    else if(turno%2 != 0 && posiciones_cuadricula[0] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[0] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       gtk_button_set_image(button_1x1, image);
       posiciones_cuadricula[0] = 2;
@@ -94,14 +104,14 @@ void on_clicked_1_2(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_1x2 = (GtkButton*) data;
     g_print("Boton 1x2 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[1] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[1] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[1] = 1;
       gtk_button_set_image(button_1x2, image);
       turno = turno + 1;
       winn();
     }
-    else if(turno%2 != 0 && posiciones_cuadricula[1] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[1] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       posiciones_cuadricula[1] = 2;
       gtk_button_set_image(button_1x2, image);
@@ -117,14 +127,14 @@ void on_clicked_1_3(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_1x3 = (GtkButton*) data;
     g_print("Boton 1x3 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[2] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[2] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[2] = 1;
       gtk_button_set_image(button_1x3, image);
       turno = turno + 1;
       winn();
     }
-    else if(turno%2 != 0 && posiciones_cuadricula[2] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[2] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       posiciones_cuadricula[2] = 2;
       gtk_button_set_image(button_1x3, image);
@@ -140,14 +150,14 @@ void on_clicked_2_1(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_2x1 = (GtkButton*) data;
     g_print("Boton 2x1 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[3] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[3] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[3] = 1;
       gtk_button_set_image(button_2x1, image);
       turno = turno + 1;
       winn();
     }
-    else if(turno%2 != 0 && posiciones_cuadricula[3] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[3] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       posiciones_cuadricula[3] = 2;
       gtk_button_set_image(button_2x1, image);
@@ -163,14 +173,14 @@ void on_clicked_2_2(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_2x2 = (GtkButton*) data;
     g_print("Boton 2x2 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[4] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[4] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[4] = 1;
       gtk_button_set_image(button_2x2, image);
       turno = turno + 1;
       winn();
     }
-    else if(turno%2 != 0 && posiciones_cuadricula[4] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[4] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       posiciones_cuadricula[4] = 2;
       gtk_button_set_image(button_2x2, image);
@@ -186,14 +196,14 @@ void on_clicked_2_3(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_2x3 = (GtkButton*) data;
     g_print("Boton 2x3 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[5] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[5] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[5] = 1;
       gtk_button_set_image(button_2x3, image);
       turno = turno + 1;
       winn();
     }
-    else if(turno%2 != 0 && posiciones_cuadricula[5] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[5] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       posiciones_cuadricula[5] = 2;
       gtk_button_set_image(button_2x3, image);
@@ -209,14 +219,14 @@ void on_clicked_3_1(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_3x1 = (GtkButton*) data;
     g_print("Boton 3x1 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[6] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[6] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[6] = 1;
       gtk_button_set_image(button_3x1, image);
       turno = turno + 1;
       winn();
     }
-    else if(turno%2 != 0 && posiciones_cuadricula[6] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[6] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       posiciones_cuadricula[6] = 2;
       gtk_button_set_image(button_3x1, image);
@@ -232,14 +242,14 @@ void on_clicked_3_2(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_3x2 = (GtkButton*) data;
     g_print("Boton 3x2 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[7] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[7] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[7] = 1;
       gtk_button_set_image(button_3x2, image);
       turno = turno + 1;
       winn();
     }
-    else if(turno%2 != 0 && posiciones_cuadricula[7] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[7] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       posiciones_cuadricula[7] = 2;
       gtk_button_set_image(button_3x2, image);
@@ -255,14 +265,14 @@ void on_clicked_3_3(GtkWidget *widget, GtkButton *button, gpointer data) {
     GtkLabel *label = (GtkLabel*) data;
     GtkButton *button_3x3 = (GtkButton*) data;
     g_print("Boton 3x3 Clicked\n");
-    if (turno%2 == 0 && posiciones_cuadricula[8] == 0){
+    if (turno%2 == 0 && posiciones_cuadricula[8] == 0 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("X (1).png");
       posiciones_cuadricula[8] = 1;
       gtk_button_set_image(button_3x3, image);
       turno = turno + 1;
       winn();
     }
-    else if(turno%2 != 0 && posiciones_cuadricula[8] != 1){
+    else if(turno%2 != 0 && posiciones_cuadricula[8] != 1 && bloqueo==0){
       GtkWidget *image = gtk_image_new_from_file("O (1).png");
       posiciones_cuadricula[8] = 2;
       gtk_button_set_image(button_3x3, image);
@@ -276,17 +286,10 @@ void on_clicked_3_3(GtkWidget *widget, GtkButton *button, gpointer data) {
 
 //función que hace la solicitud de reseteo (reset=1) cuando se presiona el boton "reiniciar"
 void on_clicked_reset(GtkWidget *widget, gpointer data) {
-  reset = 1;
-  }
-
-//función para cerrar la ventana del ganador y reiniciar la partida
-void cerrar(GtkWidget *widget, gpointer data){
-  GtkWidget *window = (GtkWidget*) data;
-  gtk_widget_hide_on_delete(window);
   ganador = 0;
   reset = 1;
-}
-
+  bloqueo = 0;
+  }
 
 
 int main(int argc, char* argv[]) {
@@ -303,10 +306,8 @@ int main(int argc, char* argv[]) {
     GtkButton *button_3x3;
     GtkWidget *quit_button;
     GtkWidget *reset_button;
-    GtkWidget *label;
-    GtkWidget *window_ganador;
-    GtkWidget *label_ganador;
-    GtkButton *boton_de_ganador;
+    GtkWidget *label_1;
+    GtkButton *boton_ganador;
 
     gtk_init(&argc, &argv);
 
@@ -327,45 +328,31 @@ int main(int argc, char* argv[]) {
     button_3x3 = GTK_BUTTON(gtk_builder_get_object(builder, "Boton_3_3"));
     quit_button = GTK_WIDGET(gtk_builder_get_object(builder, "Quit_Button"));
     reset_button = GTK_WIDGET(gtk_builder_get_object(builder, "Reset_Button"));
-    label = GTK_WIDGET(gtk_builder_get_object(builder, "label_1"));
+    label_1 = GTK_WIDGET(gtk_builder_get_object(builder, "label_1"));
+    boton_ganador = GTK_BUTTON(gtk_builder_get_object(builder, "boton_ganador"));
 
 
-
-    window_ganador = GTK_WIDGET(gtk_builder_get_object(builder,"Ventana_de_ganador"));
-    g_signal_connect(window_ganador, "destroy", G_CALLBACK(gtk_widget_hide_on_delete), NULL);
-
-
-    label_ganador = GTK_WIDGET(gtk_builder_get_object(builder, "label_de_ganador"));
-    boton_de_ganador = GTK_BUTTON(gtk_builder_get_object(builder, "boton_de_ganador"));
-
-
-
-
-    g_signal_connect(button_1x1, "clicked", G_CALLBACK(on_clicked_1_1), label);
-    g_signal_connect(button_1x2, "clicked", G_CALLBACK(on_clicked_1_2), label);
-    g_signal_connect(button_1x3, "clicked", G_CALLBACK(on_clicked_1_3), label);
-    g_signal_connect(button_2x1, "clicked", G_CALLBACK(on_clicked_2_1), label);
-    g_signal_connect(button_2x2, "clicked", G_CALLBACK(on_clicked_2_2), label);
-    g_signal_connect(button_2x3, "clicked", G_CALLBACK(on_clicked_2_3), label);
-    g_signal_connect(button_3x1, "clicked", G_CALLBACK(on_clicked_3_1), label);
-    g_signal_connect(button_3x2, "clicked", G_CALLBACK(on_clicked_3_2), label);
-    g_signal_connect(button_3x3, "clicked", G_CALLBACK(on_clicked_3_3), label);
+    g_signal_connect(button_1x1, "clicked", G_CALLBACK(on_clicked_1_1), label_1);
+    g_signal_connect(button_1x2, "clicked", G_CALLBACK(on_clicked_1_2), label_1);
+    g_signal_connect(button_1x3, "clicked", G_CALLBACK(on_clicked_1_3), label_1);
+    g_signal_connect(button_2x1, "clicked", G_CALLBACK(on_clicked_2_1), label_1);
+    g_signal_connect(button_2x2, "clicked", G_CALLBACK(on_clicked_2_2), label_1);
+    g_signal_connect(button_2x3, "clicked", G_CALLBACK(on_clicked_2_3), label_1);
+    g_signal_connect(button_3x1, "clicked", G_CALLBACK(on_clicked_3_1), label_1);
+    g_signal_connect(button_3x2, "clicked", G_CALLBACK(on_clicked_3_2), label_1);
+    g_signal_connect(button_3x3, "clicked", G_CALLBACK(on_clicked_3_3), label_1);
     g_signal_connect(quit_button, "clicked", G_CALLBACK(exit), NULL);
-    g_signal_connect(reset_button, "clicked", G_CALLBACK(on_clicked_reset), label);
+    g_signal_connect(reset_button, "clicked", G_CALLBACK(on_clicked_reset), label_1);
 
 
-
-
-
-
-//GtkWidget *image = gtk_image_new_from_file("X (1).png");
 
 //bucle de la Ventana
-//dentro del bucle se revisa si se solicitó un reseteo de las piezas ()
+//dentro del bucle se revisa si se solicitó un reseteo de las piezas
 gtk_widget_show_all(window);
-  while (loop = 1){
-    if (reset == 1){
 
+  while (loop = 1){
+    gtk_main_iteration();
+    if (reset == 1){
       //se le cambia la imagen a los botones, por la imagen transparente recien cargada
       GtkWidget *img_trans_1x1 = gtk_image_new_from_file("imagen_transparente.png");
       gtk_button_set_image(button_1x1, img_trans_1x1);
@@ -386,7 +373,7 @@ gtk_widget_show_all(window);
       GtkWidget *img_trans_3x3 = gtk_image_new_from_file("imagen_transparente.png");
       gtk_button_set_image(button_3x3, img_trans_3x3);
 
-      //se cambian todos los elementos en posiciones_cuadricula a 0 para empezar el juego desde cero
+      //se cambian todos los elementos en "posiciones_cuadricula" a 0 para empezar el juego desde cero
       posiciones_cuadricula[0]=0;
       posiciones_cuadricula[1]=0;
       posiciones_cuadricula[2]=0;
@@ -399,20 +386,22 @@ gtk_widget_show_all(window);
       reset = 0;
 
     }else{
+      gtk_main_iteration();
       if(ganador == 2){
-
-        gtk_widget_show_all(window_ganador);
+        gtk_label_set_text((GtkLabel  *)label_1, "El ganador es: ");
         GtkWidget *img_ganador_O = gtk_image_new_from_file("O (1).png");
-        gtk_button_set_image(boton_de_ganador, img_ganador_O);
-        gtk_main_iteration();
+        gtk_button_set_image(boton_ganador, img_ganador_O);
 
       }else if(ganador == 1){
-
-        gtk_widget_show_all(window_ganador);
+        gtk_label_set_text((GtkLabel  *)label_1, "El ganador es: ");
         GtkWidget *img_ganador_X = gtk_image_new_from_file("X (1).png");
-        gtk_button_set_image(boton_de_ganador, img_ganador_X);
-        gtk_main_iteration();
+        gtk_button_set_image(boton_ganador, img_ganador_X);
 
+      }else if(ganador == 0){
+        //se establece el logo del juego:
+        gtk_label_set_text((GtkLabel  *)label_1, "Bienvenido a: ");
+        GtkWidget *img_logo = gtk_image_new_from_file("logo_juego.png");
+        gtk_button_set_image(boton_ganador, img_logo);
 
       }
       gtk_main_iteration();
