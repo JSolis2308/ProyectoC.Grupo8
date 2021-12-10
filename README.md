@@ -7,3 +7,8 @@ Descripción y uso de la aplicacion:
    logre poner tres de sus fichas en una linea seguida, será el ganador del juego.
   El ganador del juego se mostrará en la parte superior, al lado del boton de "reiniciar".
   Una vez que se muestra al jugador, no se podrán realizar mas movimientos, hasta que se presione el boton "reinciar", para comenzar una nueva partida.
+
+Autores de la aplicacion: 
+-Sergio Camacho B91476
+-Johan Solis Soto C07686
+-Mario Navarro Bejarano B75398
